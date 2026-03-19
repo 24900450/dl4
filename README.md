@@ -1,21 +1,6 @@
 # dl4
 ```python
-# Get the total number of samples in the testing dataset
 
-print(f"Total number of training samples: {len(test_dataset)}")
-
-# Get the shape of the first image in the dataset
-
-first_image, label = test_dataset[0]
-print(f"Shape of the first image: {first_image.shape}")
-
-## Step 2: Load Pretrained Model and Modify for Transfer Learning
-# Load a pre-trained VGG19 model
-model=models.vgg19(weights=VGG19_Weights.DEFAULT)
-
-# Include the Loss function and optimizer
-criterion = nn.BCEWithLogitsLoss()
-optimizer = optim.Adam(model.parameters(),lr=0.001)
 
 ## Step 3: Train the Model
 def train_model(model, train_loader,test_loader,num_epochs=10):
