@@ -1,6 +1,20 @@
 # dl4
 ```python
 
+from torchvision.models import  VGG19_Weights
+
+# Get the total number of samples in the testing dataset
+print(f"Total number of training samples: {len(test_dataset)}")
+
+# Get the shape of the first image in the dataset
+first_image, label = test_dataset[0]
+print(f"Shape of the first image: {first_image.shape}")
+
+# Load a pre-trained VGG19 model
+model=models.vgg19(weights=VGG19_Weights.DEFAULT)
+
+# Modify the final fully connected layer to match the dataset classes
+model.classifier[-1]=nn.Linear(model.classifier[-1].in_features,1)
 
 ## Step 3: Train the Model
 def train_model(model, train_loader,test_loader,num_epochs=10):
@@ -34,9 +48,4 @@ def train_model(model, train_loader,test_loader,num_epochs=10):
 
 # Train the model
 train_model(model, train_loader,test_loader,num_epochs=10)
-
-# Evaluate the model
-test_model(model, test_loader)
-
-
 ```
